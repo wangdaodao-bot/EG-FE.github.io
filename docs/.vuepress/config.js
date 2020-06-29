@@ -4,11 +4,11 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Docs Boilerplate',
+  title: '电子政务前端文档 ',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
-  description: description,
+  description: 'Talk is cheap. Show me the code.',
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -57,6 +57,11 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'HTML',
+            'CSS',
+            'JavaScript',
+            'JSON',
+            'VUE'
           ]
         }
       ],

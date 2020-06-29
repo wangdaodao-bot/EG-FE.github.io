@@ -1,9 +1,9 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: 电子政务前端文档
+tagline: Talk is cheap. Show me the code.
 actionText: 快速查看
-actionLink: /guide/
+actionLink: /standard/
 features:
 - title: Feature 1 Title
   details: Feature 1 Description
