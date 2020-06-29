@@ -34,6 +34,10 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
+        text: '规范',
+        link: '/standard/',
+      },
+      {
         text: '指南',
         link: '/guide/',
       },
@@ -47,6 +51,15 @@ module.exports = {
       }
     ],
     sidebar: {
+      '/standard/': [
+        {
+          title: '规范',
+          collapsable: false,
+          children: [
+            '',
+          ]
+        }
+      ],
       '/guide/': [
         {
           title: '指南',

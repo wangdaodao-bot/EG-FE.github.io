@@ -1,8 +1,8 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: 前端文档
-actionText: Quick Start →
+tagline: 电子政务前端文档
+actionText: 快速查看
 actionLink: /guide/
 features:
 - title: Feature 1 Title
