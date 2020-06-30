@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /imgs/home/code.png
+heroImage: /imgs/home/code.jpg
 tagline: Talk is cheap. Show me the code.
 actionText: 快速查看
 actionLink: /standard/
