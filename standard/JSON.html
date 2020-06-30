@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JSON数据传输标准 | 电子政务前端文档 </title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="前端文档">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/assets/css/0.styles.003884ad.css" as="style"><link rel="preload" href="/assets/js/app.ff5adbca.js" as="script"><link rel="preload" href="/assets/js/2.46511ea9.js" as="script"><link rel="preload" href="/assets/js/15.09a53609.js" as="script"><link rel="prefetch" href="/assets/js/10.27d1a97a.js"><link rel="prefetch" href="/assets/js/11.8c229adc.js"><link rel="prefetch" href="/assets/js/12.4db9c06f.js"><link rel="prefetch" href="/assets/js/13.59163e31.js"><link rel="prefetch" href="/assets/js/14.aa6ee09b.js"><link rel="prefetch" href="/assets/js/16.3c1325b4.js"><link rel="prefetch" href="/assets/js/17.fd273565.js"><link rel="prefetch" href="/assets/js/18.3f44a89c.js"><link rel="prefetch" href="/assets/js/3.cdb0d4eb.js"><link rel="prefetch" href="/assets/js/4.1535856f.js"><link rel="prefetch" href="/assets/js/5.ef61356c.js"><link rel="prefetch" href="/assets/js/6.51e4d4fc.js"><link rel="prefetch" href="/assets/js/7.ae9f844a.js"><link rel="prefetch" href="/assets/js/8.ae61d003.js"><link rel="prefetch" href="/assets/js/9.4e47781f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.003884ad.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">电子政务前端文档 </span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/standard/" class="nav-link router-link-active">
+  规范
+</a></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="https://uxd.const.team/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  组件
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/EG-FE/EG-FE.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/standard/" class="nav-link router-link-active">
+  规范
+</a></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="https://uxd.const.team/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  组件
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/EG-FE/EG-FE.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>规范</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/standard/" aria-current="page" class="sidebar-link">目标</a></li><li><a href="/standard/HTML.html" class="sidebar-link">HTML编码规范</a></li><li><a href="/standard/CSS.html" class="sidebar-link">CSS 编码规范</a></li><li><a href="/standard/JavaScript.html" class="sidebar-link">JavaScript编码规范</a></li><li><a href="/standard/JSON.html" aria-current="page" class="active sidebar-link">JSON数据传输标准</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/standard/JSON.html#_1-简介" class="sidebar-link">1 简介</a></li><li class="sidebar-sub-header"><a href="/standard/JSON.html#_2-json数据类型" class="sidebar-link">2 JSON数据类型</a></li><li class="sidebar-sub-header"><a href="/standard/JSON.html#_3-http响应头" class="sidebar-link">3 http响应头</a></li><li class="sidebar-sub-header"><a href="/standard/JSON.html#_4-数据字段" class="sidebar-link">4 数据字段</a></li><li class="sidebar-sub-header"><a href="/standard/JSON.html#_5-数据场景" class="sidebar-link">5 数据场景</a></li></ul></li><li><a href="/standard/VUE.html" class="sidebar-link">Vue 编码规范</a></li><li><a href="/standard/CopyWriter.html" class="sidebar-link">文案风格指南</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="json数据传输标准"><a href="#json数据传输标准" class="header-anchor">#</a> JSON数据传输标准</h1> <h2 id="_1-简介"><a href="#_1-简介" class="header-anchor">#</a> 1 简介</h2> <p><code>JSON</code>(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 <code>ECMAScript</code> (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 <code>JSON</code> 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</p> <h2 id="_2-json数据类型"><a href="#_2-json数据类型" class="header-anchor">#</a> 2 JSON数据类型</h2> <p>包括了基本数据类型4种和复合数据类型2种，共6种数据类型。</p> <p>传输的数据，包括对象属性以及数组成员， <strong>必须(MUST)</strong> 是 6 种 <code>JSON</code> 数据类型之一。 <strong>不要(MUST NOT)</strong> 使用<code>function</code>、<code>Date</code>等 <code>js</code> 对象类型。</p> <h3 id="_2-1-基本数据类型"><a href="#_2-1-基本数据类型" class="header-anchor">#</a> 2.1 基本数据类型</h3> <ul><li><code>Number</code>可以表示整数和浮点数。</li> <li><code>Boolean</code> 可以表示真假，值为 <code>true</code> 或 <code>false</code>。</li> <li><code>String</code> 表示一个字符串。</li> <li><code>Null</code> 通常用于表示空对象。</li></ul> <p><code>&quot;true&quot;</code> 和 <code>true</code>，这两个数据代表的是不同的数据类型。非字符串类型数据输出时一定 <strong>不要(MUST NOT)</strong> 为两端加上双引号，否则可能产生不希望的后果（如<code>if</code>中判断<code>&quot;false&quot;</code>的结果是<code>true</code>）。其他容易产生错误的例子如：<code>0</code>和<code>&quot;0&quot;</code>等。</p> <h3 id="_2-2-复合数据类型"><a href="#_2-2-复合数据类型" class="header-anchor">#</a> 2.2 复合数据类型</h3> <p><code>Object</code> 是无序的集合，以键值对的方式保持数据。一个 <code>Object</code>中包含零到多个 <code>name/value</code>的数据，数据间以逗号(<code>,</code>)分隔。<code>name</code> 为 <code>String</code>类型，<code>value</code> 可以是任意类型的数据。</p> <p><code>Object</code> 的最后一个元素之后一定 <strong>不要(MUST NOT)</strong> 加上分隔符的逗号，否则可能导致解析出错。</p> <p><code>Array</code> (数组)为多个值的有序集合，数组元素间以逗号(<code>,</code>)分隔。</p> <h2 id="_3-http响应头"><a href="#_3-http响应头" class="header-anchor">#</a> 3 http响应头</h2> <h3 id="_3-1-status"><a href="#_3-1-status" class="header-anchor">#</a> 3.1 status</h3> <p><code>http</code> 响应的<code>status</code> <strong>必须(MUST)</strong> 为 <code>200</code>。通常 <code>JSON</code> 数据被用于通过 <code>XMLHttpRequest</code> 对象访问，通过 <code>javascript</code> 进行处理。返回错误的状态码可能导致错误不被响应，数据不被处理。</p> <ul><li>200：代表请求成功，并不代表业务成功，不能作为检查点来设置；</li> <li>302：重定向，一般用浏览器或者<code>http</code>工具请求没问题，用<code>HttpClient</code>请求需要处理；</li> <li>304：请求了一次，本地已经缓存了，再次请求，就会返回<code>304</code>，一般是页面在本地加<code>catch</code>了；</li> <li>400：参数错误：漏传参数；</li> <li>404：路径找不到、服务启动时报错；</li> <li>405：请求方法错误；<code>get</code>、<code>post</code>；</li> <li>415：媒体（数据）类型不一致，这个问题主要就是<code>content-type</code>的问题；</li> <li>500：服务器内部错误，代码运行过程中抛出异常了，并且该异常没有被捕获；</li></ul> <h3 id="_3-2-content-type"><a href="#_3-2-content-type" class="header-anchor">#</a> 3.2 Content-Type</h3> <p><code>Content-Type</code> 字段定义了响应体的类型。一般情况下，浏览器会根据该类型对内容进行正确的处理。对于传输 <code>JSON</code> 数据的响应，<code>Content-Type</code> <em>推荐(RECOMMENDED)</em> 设置为 <code>text/javascript</code> 或 <code>text/plain</code> 。 <em>避免(MUST NOT)</em> 将 <code>Context-Type</code> 设置为 <code>text/html</code>，否则可能导致安全问题。</p> <p><code>Content-Type</code> 中可以指定字符集。通常 <em>需要(SHOULD)</em> 明确指定一个字符集。如果是通过 <code>XMLHTTPRequest</code> 请求的数据，并且字符编码为 <code>UTF-8</code> 时，可以不指定字符集。</p> <p><code>Context-Type</code> 示例：</p> <div class="language- extra-class"><pre><code>text/javascript;charset=UTF-8
+</code></pre></div><h2 id="_4-数据字段"><a href="#_4-数据字段" class="header-anchor">#</a> 4 数据字段</h2> <p>返回的数据包含在 <code>http</code> 响应体中。数据 <strong>必须(MUST)</strong> 是一个 <code>JSON Object</code> 。该 <code>Object</code> 可能包含3个字段：<code>code</code> ，<code>message</code> ，<code>data</code>。</p> <h3 id="_4-1-code"><a href="#_4-1-code" class="header-anchor">#</a> 4.1 code</h3> <p><code>code</code> 字段 <strong>必须(MUST)</strong> 是一个不小于 <code>0</code> 的 <code>JSON Number</code> 整数，表示请求的状态。这个字段 <strong>不要(MUST NOT)</strong> 省略。</p> <h4 id="一个成功请求的code字段"><a href="#一个成功请求的code字段" class="header-anchor">#</a> 一个成功请求的code字段</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token string">&quot;hello world!&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-2-message"><a href="#_4-2-message" class="header-anchor">#</a> 4.2 message</h3> <p><code>message</code> 字段 <em>通常(SHOULD)</em> 是一个 <code>JSON String</code> 或 <code>JSON Object</code> ，表示除了请求状态外 <code>server</code> 端想要对 <code>status</code> 做出的说明，使 <code>client</code> 端能够获取更多信息进行后续处理。这个字段是 <em>可选的(OPTIONAL)</em> 。下面的两个例子中，<code>message</code> 字段的信息都可以用于 <code>client</code> 端程序的后续处理，但是粒度和处理方式会有不同。</p> <h4 id="client端参数错误的message"><a href="#client端参数错误的message" class="header-anchor">#</a> client端参数错误的message</h4> <p>简单说明的 <code>message</code>：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token string">&quot;无权限&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-3-data"><a href="#_4-3-data" class="header-anchor">#</a> 4.3 data</h3> <p><code>data</code> 字段可以是除 <code>JSON Null</code> 之外的任意 <code>JSON</code> 类型，表示请求返回的数据主体。这个字段是 <em>可选的(OPTIONAL)</em> 。数据主体 <code>data</code> 包含了在请求成功时有意义的数据。</p> <h4 id="一个查询姓名请求的返回数据"><a href="#一个查询姓名请求的返回数据" class="header-anchor">#</a> 一个查询姓名请求的返回数据</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Lily&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_5-数据场景"><a href="#_5-数据场景" class="header-anchor">#</a> 5 数据场景</h2> <p>本章为常见数据场景定义了通用的标准数据格式，用于数据传输和使用。</p> <h3 id="_5-1-日期类型"><a href="#_5-1-日期类型" class="header-anchor">#</a> 5.1 日期类型</h3> <p>日期类型不属于 <code>JSON</code> 数据类型。对于日期类型，我们 <strong>必须(MUST)</strong> 使用 <code>JSON String</code> 来表示。为了让日期能够更容易的被显示和被解析，对于日期我们 <em>应当(SHOULD)</em> 使用更适合 <code>internet</code> 的格式，遵循rfc3339。</p> <h4 id="数据场景：日期"><a href="#数据场景：日期" class="header-anchor">#</a> 数据场景：日期</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2010-10-10&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-2-记录"><a href="#_5-2-记录" class="header-anchor">#</a> 5.2 记录</h3> <p>记录代表二维表中的一行，通常用于表示某个具体事务抽象的属性。</p> <h4 id="数据场景：记录"><a href="#数据场景：记录" class="header-anchor">#</a> 数据场景：记录</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">250</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;erik&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;sex&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">18</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-3-二维表"><a href="#_5-3-二维表" class="header-anchor">#</a> 5.3 二维表</h3> <p>标准二维表数据 <strong>必须(MUST)</strong> 以一维 <code>JSON Array</code> 形式表示，<code>JSON Array</code> 中每一项是一个 <code>JSON Object</code>，代表一条记录。<code>JSON Object</code> 的每个成员代表一个字段。</p> <h4 id="数据场景：标准二维表"><a href="#数据场景：标准二维表" class="header-anchor">#</a> 数据场景：标准二维表</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">250</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;erik&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;sex&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">18</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">251</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;欧阳先伟&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;sex&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">28</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="_5-4-数据页"><a href="#_5-4-数据页" class="header-anchor">#</a> 5.4 数据页</h3> <p>数据页是列表数据常用的数据方式，可能通过查询或翻页获得数据。数据页是二维表数据的包装，包含列表数据本身更多的信息。</p> <p>数据页 <strong>必须(MUST)</strong> 是一个 <code>JSON Object</code>，其中 <strong>必须(MUST)</strong> 包含的属性为 <code>data</code>。<code>data</code>是一个二维表。数据页可以包括一些 <em>可选(OPTIONAL)</em> 的属性，表示当前数据页的信息。下表列举了数据页的可选属性。</p> <h4 id="数据页可选属性"><a href="#数据页可选属性" class="header-anchor">#</a> 数据页可选属性</h4> <ul><li><code>{Number} page</code> - 当前页码，计数 <strong>必须(MUST)</strong> 为不小于0的整数，从0开始。</li> <li><code>{Number} pageSize</code> - 每页显示条数， <strong>必须(MUST)</strong> 大于0。</li> <li><code>{Number} total</code> - 列表总记录数， <strong>必须(MUST)</strong> 为不小于0的整数。表示当前条件下所有记录的数目，非本页的记录数。</li> <li><code>{String} orderBy</code> - 列表排序规则。多个排序规则之间以逗号分割（<code>,</code>）；正序或倒序以<code>asc</code>或<code>desc</code>表示，与字段名之间以一个空格间隔。</li> <li><code>{String} keyword</code> - 列表所属的搜索关键字。</li> <li><code>{Object} condition</code> - 列表所属的搜索条件集合。属性中可以包含或不包含<code>keyword</code>字段，如果不包含， <em>建议(RECOMMMANDED)</em> 在解析的时候附加搜索关键字<code>keyword</code>条件。</li></ul> <h4 id="数据场景：数据页"><a href="#数据场景：数据页" class="header-anchor">#</a> 数据场景：数据页</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;page&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;pageSize&quot;</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;keyword&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">250</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;erik&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;sex&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">18</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">251</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;欧阳先伟&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;sex&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">28</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-5-键-值对象"><a href="#_5-5-键-值对象" class="header-anchor">#</a> 5.5 键/值对象</h3> <p>对于在一个<code>JSON Object</code>中表示键/值：</p> <ul><li>键的属性名 <strong>必须(MUST)</strong> 为<code>name</code>， <strong>不要(MUST NOT)</strong> 使用 <code>key</code> 或 <code>k</code></li> <li>值的属性名 <strong>必须(MUST)</strong> 为<code>value</code>， <strong>不要(MUST NOT)</strong> 使用<code>v</code>。</li></ul> <h4 id="数据场景：键-值对象"><a href="#数据场景：键-值对象" class="header-anchor">#</a> 数据场景：键/值对象</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;BMW&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-6-键-值有序集合"><a href="#_5-6-键-值有序集合" class="header-anchor">#</a> 5.6 键/值有序集合</h3> <p>键/值有序集合表示对事务或逻辑类型的抽象与分类。常见的应用场景有单选复选框集合，下拉菜单等。</p> <p>标准的键/值有序集合是一个<code>JSON Array</code>，集合中的每一项是一个<code>JSON Object</code>。项 <strong>必须(MUST)</strong> 包含<code>name</code>和<code>value</code>属性。 <em>可以(MAY)</em> 通过其他的属性修饰每一项的特殊信息，如<code>selected</code>。</p> <h4 id="数据场景：键-值有序集合"><a href="#数据场景：键-值有序集合" class="header-anchor">#</a> 数据场景：键/值有序集合</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;BMW&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Benz&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;value&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;selected&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="_5-7-树"><a href="#_5-7-树" class="header-anchor">#</a> 5.7 树</h3> <p>树形数据用于表示层叠的数据结构。树型数据 <strong>必须(MUST)</strong> 是一个<code>JSON Object</code>，代表树型数据的根节点。下面是标准定义的可选节点列表，不在列表中的属性 <em>可以(SHOULD)</em> 自行扩展。</p> <h4 id="_5-7-1-树型数据结构的可选节点属性"><a href="#_5-7-1-树型数据结构的可选节点属性" class="header-anchor">#</a> 5.7.1 树型数据结构的可选节点属性</h4> <ul><li><code>{Number|String} id</code> - 节点的唯一标识。</li> <li><code>{String} text</code> - 名称或用于显示的字符串。</li> <li><code>{Array} children</code> - 子节点列表。</li></ul> <h4 id="_5-7-2-数据场景：树型数据"><a href="#_5-7-2-数据场景：树型数据" class="header-anchor">#</a> 5.7.2 数据场景：树型数据</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;中国&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;北京&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;东城区&quot;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;西城区&quot;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">102</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;海淀区&quot;</span>
+                <span class="token punctuation">}</span>
+                ......
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">31</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;海南&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;海口&quot;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">601</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;三亚&quot;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">602</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;五指山&quot;</span>
+                <span class="token punctuation">}</span>
+                ......
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        ......
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/EG-FE/EG-FE.github.io/edit/develop/docs/standard/JSON.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">文档更新时间:</span> <span class="time">1 分钟前</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/standard/JavaScript.html" class="prev">
+        JavaScript编码规范
+      </a></span> <span class="next"><a href="/standard/VUE.html">
+        Vue 编码规范
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.ff5adbca.js" defer></script><script src="/assets/js/2.46511ea9.js" defer></script><script src="/assets/js/15.09a53609.js" defer></script>
+  </body>
+</html>
