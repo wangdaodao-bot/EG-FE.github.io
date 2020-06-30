@@ -12,7 +12,7 @@ HTML 作为描述网页结构的超文本标记语言，在百度一直有着广
 ### 2.1 缩进与换行
 
 
-#### [强制] 使用 `4` 个空格做为一个缩进层级，不允许使用 `2` 个空格 或 `tab` 字符。
+#### **【强制】** 使用 `4` 个空格做为一个缩进层级，不允许使用 `2` 个空格 或 `tab` 字符。
 
 解释：
 对于非 HTML 标签之间的缩进，比如 script 或 style 标签内容缩进，与 script 或 style 标签的缩进同级。
@@ -38,7 +38,7 @@ require(['app'], function (app) {
 </script>
 ```
 
-#### [建议] 每行不得超过 `120` 个字符。
+#### **【建议】** 每行不得超过 `120` 个字符。
 
 解释：
 
@@ -49,9 +49,9 @@ require(['app'], function (app) {
 
 
 
-#### [强制] `class` 必须单词全字母小写，单词间以 `-` 分隔。
+#### **【强制】** `class` 必须单词全字母小写，单词间以 `-` 分隔。
 
-#### [强制] `class` 必须代表相应模块或部件的内容或功能，不得以样式信息进行命名。
+#### **【强制】** `class` 必须代表相应模块或部件的内容或功能，不得以样式信息进行命名。
 
 示例：
 
@@ -63,17 +63,17 @@ require(['app'], function (app) {
 <div class="left"></div>
 ```
 
-#### [强制] 元素 `id` 必须保证页面唯一。
+#### **【强制】** 元素 `id` 必须保证页面唯一。
 
 解释：
 
 同一个页面中，不同的元素包含相同的 `id`，不符合 `id` 的属性含义。并且使用 `document.getElementById` 时可能导致难以追查的问题。
 
 
-#### [建议] `id` 建议单词全字母小写，单词间以 `-` 分隔。同项目必须保持风格一致。
+#### **【建议】** `id` 建议单词全字母小写，单词间以 `-` 分隔。同项目必须保持风格一致。
 
 
-#### [建议] `id`、`class` 命名，在避免冲突并描述清楚的前提下尽可能短。
+#### **【建议】** `id`、`class` 命名，在避免冲突并描述清楚的前提下尽可能短。
 
 示例：
 
@@ -94,7 +94,7 @@ require(['app'], function (app) {
 <span class="red"></span>
 ```
 
-#### [强制] 禁止为了 `hook 脚本`，创建无样式信息的 `class`。
+#### **【强制】** 禁止为了 `hook 脚本`，创建无样式信息的 `class`。
 
 解释：
 
@@ -103,7 +103,7 @@ require(['app'], function (app) {
 使用 `id`、属性选择作为 hook 是更好的方式。
 
 
-#### [强制] 同一页面，应避免使用相同的 `name` 与 `id`。
+#### **【强制】** 同一页面，应避免使用相同的 `name` 与 `id`。
 
 解释：
 
@@ -126,7 +126,7 @@ alert(document.getElementById('foo').tagName);
 ### 2.3 标签
 
 
-#### [强制] 标签名必须使用小写字母。
+#### **【强制】** 标签名必须使用小写字母。
 
 示例：
 
@@ -138,7 +138,7 @@ alert(document.getElementById('foo').tagName);
 <P>Hello StyleGuide!</P>
 ```
 
-#### [强制] 对于无需自闭合的标签，不允许自闭合。
+#### **【强制】** 对于无需自闭合的标签，不允许自闭合。
 
 解释：
 
@@ -155,7 +155,7 @@ alert(document.getElementById('foo').tagName);
 <input type="text" name="title" />
 ```
 
-#### [强制] 对 `HTML5` 中规定允许省略的闭合标签，不允许省略闭合标签。
+#### **【强制】** 对 `HTML5` 中规定允许省略的闭合标签，不允许省略闭合标签。
 
 解释：
 
@@ -179,7 +179,7 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [强制] 标签使用必须符合标签嵌套规则。
+#### **【强制】** 标签使用必须符合标签嵌套规则。
 
 解释：
 
@@ -191,7 +191,7 @@ alert(document.getElementById('foo').tagName);
 * 块级元素与块级元素并列、内嵌元素与内嵌元素并列
 
 
-#### [建议] HTML 标签的使用应该遵循标签的语义。
+#### **【建议】** HTML 标签的使用应该遵循标签的语义。
 
 解释：
 
@@ -223,14 +223,33 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [建议] 在 CSS 可以实现相同需求的情况下不得使用表格进行布局。
+**【强制】**不允许使用过时的旧标签，请使用新标签或者CSS代替：
+
+<ul>
+    <li><del><code>acronym</code></del> → <ins><code>abbr</code></ins></li>
+    <li><del><code>applet</code></del> → <ins><code>object</code></ins></li>
+    <li><del><code>b</code></del> → <ins><code>strong</code></ins></li>
+    <li><del><code>dir</code></del> → <ins><code>ul</code></ins></li>
+    <li><del><code>strike</code></del> → <ins><code>del</code></ins></li>
+    <li><del><code>basefont</code></del></li>
+    <li><del><code>big</code></del></li>
+    <li><del><code>center</code></del></li>
+    <li><del><code>font</code></del></li>
+    <li><del><code>isindex</code></del></li>
+    <li><del><code>tt</code></del></li>
+    <li><del><code>u</code></del></li>
+</ul>
+
+请参详：http://www.w3schools.com/tags/
+
+#### **【建议】** 在 CSS 可以实现相同需求的情况下不得使用表格进行布局。
 
 解释：
 
 在兼容性允许的情况下应尽量保持语义正确性。对网格对齐和拉伸性有严格要求的场景允许例外，如多列复杂表单。
 
 
-#### [建议] 标签的使用应尽量简洁，减少不必要的标签。
+#### **【建议】** 标签的使用应尽量简洁，减少不必要的标签。
 
 示例：
 
@@ -249,7 +268,7 @@ alert(document.getElementById('foo').tagName);
 ### 2.4 属性
 
 
-#### [强制] 属性名必须使用小写字母。
+#### **【强制】** 属性名必须使用小写字母。
 
 示例：
 
@@ -262,7 +281,7 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [强制] 属性值必须用双引号包围。
+#### **【强制】** 属性值必须用双引号包围。
 
 解释：
 
@@ -280,7 +299,7 @@ alert(document.getElementById('foo').tagName);
 <script src=esl.js></script>
 ```
 
-#### [建议] 布尔类型的属性，建议不添加属性值。
+#### **【建议】** 布尔类型的属性，建议不添加属性值。
 
 示例：
 
@@ -290,7 +309,7 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [建议] 自定义属性建议以 `xxx-` 为前缀，推荐使用 `data-`。
+#### **【建议】** 自定义属性建议以 `xxx-` 为前缀，推荐使用 `data-`。
 
 解释：
 
@@ -311,7 +330,7 @@ alert(document.getElementById('foo').tagName);
 ### 3.1 DOCTYPE
 
 
-#### [强制] 使用 `HTML5` 的 `doctype` 来启用标准模式，建议使用大写的 `DOCTYPE`。
+#### **【强制】** 使用 `HTML5` 的 `doctype` 来启用标准模式，建议使用大写的 `DOCTYPE`。
 
 示例：
 
@@ -319,7 +338,7 @@ alert(document.getElementById('foo').tagName);
 <!DOCTYPE html>
 ```
 
-#### [建议] 启用 IE Edge 模式。
+#### **【建议】** 启用 IE Edge 模式。
 
 示例：
 
@@ -327,7 +346,7 @@ alert(document.getElementById('foo').tagName);
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 ```
 
-#### [建议] 在 `html` 标签上设置正确的 `lang` 属性。
+#### **【建议】** 在 `html` 标签上设置正确的 `lang` 属性。
 
 解释：
 
@@ -344,7 +363,7 @@ alert(document.getElementById('foo').tagName);
 ### 3.2 编码
 
 
-#### [强制] 页面必须使用精简形式，明确指定字符编码。指定字符编码的 `meta` 必须是 `head` 的第一个直接子元素。
+#### **【强制】** 页面必须使用精简形式，明确指定字符编码。指定字符编码的 `meta` 必须是 `head` 的第一个直接子元素。
 
 解释：
 
@@ -364,7 +383,7 @@ alert(document.getElementById('foo').tagName);
 </html>
 ```
 
-#### [建议] `HTML` 文件使用无 `BOM` 的 `UTF-8` 编码。
+#### **【建议】** `HTML` 文件使用无 `BOM` 的 `UTF-8` 编码。
 
 解释：
 
@@ -375,7 +394,7 @@ alert(document.getElementById('foo').tagName);
 ### 3.3 CSS 和 JavaScript 引入
 
 
-#### [强制] 引入 `CSS` 时必须指明 `rel="stylesheet"`。
+#### **【强制】** 引入 `CSS` 时必须指明 `rel="stylesheet"`。
 
 示例：
 
@@ -384,28 +403,28 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [建议] 引入 `CSS` 和 `JavaScript` 时无须指明 `type` 属性。
+#### **【建议】** 引入 `CSS` 和 `JavaScript` 时无须指明 `type` 属性。
 
 解释：
 
 `text/css` 和 `text/javascript` 是 `type` 的默认值。
 
 
-#### [建议] 展现定义放置于外部 `CSS` 中，行为定义放置于外部 `JavaScript` 中。
+#### **【建议】** 展现定义放置于外部 `CSS` 中，行为定义放置于外部 `JavaScript` 中。
 
 解释：
 
 结构-样式-行为的代码分离，对于提高代码的可阅读性和维护性都有好处。
 
 
-#### [建议] 在 `head` 中引入页面需要的所有 `CSS` 资源。
+#### **【建议】** 在 `head` 中引入页面需要的所有 `CSS` 资源。
 
 解释：
 
 在页面渲染的过程中，新的CSS可能导致元素的样式重新计算和绘制，页面闪烁。
 
 
-#### [建议] `JavaScript` 应当放在页面末尾，或采用异步加载。
+#### **【建议】** `JavaScript` 应当放在页面末尾，或采用异步加载。
 
 解释：
 
@@ -422,7 +441,7 @@ alert(document.getElementById('foo').tagName);
 ```
 
 
-#### [建议] 移动环境或只针对现代浏览器设计的 Web 应用，如果引用外部资源的 `URL` 协议部分与页面相同，建议省略协议前缀。
+#### **【建议】** 移动环境或只针对现代浏览器设计的 Web 应用，如果引用外部资源的 `URL` 协议部分与页面相同，建议省略协议前缀。
 
 解释：
 
@@ -446,9 +465,9 @@ alert(document.getElementById('foo').tagName);
 ### 4.1 title
 
 
-#### [强制] 页面必须包含 `title` 标签声明标题。
+#### **【强制】** 页面必须包含 `title` 标签声明标题。
 
-#### [强制] `title` 必须作为 `head` 的直接子元素，并紧随 `charset` 声明之后。
+#### **【强制】** `title` 必须作为 `head` 的直接子元素，并紧随 `charset` 声明之后。
 
 解释：
 
@@ -467,7 +486,7 @@ alert(document.getElementById('foo').tagName);
 ### 4.2 favicon
 
 
-#### [强制] 保证 `favicon` 可访问。
+#### **【强制】** 保证 `favicon` 可访问。
 
 解释：
 
@@ -486,7 +505,7 @@ alert(document.getElementById('foo').tagName);
 ### 4.3 viewport
 
 
-#### [建议] 若页面欲对移动设备友好，需指定页面的 `viewport`。
+#### **【建议】** 若页面欲对移动设备友好，需指定页面的 `viewport`。
 
 解释：
 
@@ -503,28 +522,28 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 
 
 
-#### [强制] 禁止 `img` 的 `src` 取值为空。延迟加载的图片也要增加默认的 `src`。
+#### **【强制】** 禁止 `img` 的 `src` 取值为空。延迟加载的图片也要增加默认的 `src`。
 
 解释：
 
 `src` 取值为空，会导致部分浏览器重新加载一次当前页面，参考：<https://developer.yahoo.com/performance/rules.html#emptysrc>
 
 
-#### [建议] 避免为 `img` 添加不必要的 `title` 属性。
+#### **【建议】** 避免为 `img` 添加不必要的 `title` 属性。
 
 解释：
 
 多余的 `title` 影响看图体验，并且增加了页面尺寸。
 
-#### [建议] 为重要图片添加 `alt` 属性。
+#### **【建议】** 为重要图片添加 `alt` 属性。
 
 解释：
 
 可以提高图片加载失败时的用户体验。
 
-#### [建议] 添加 `width` 和 `height` 属性，以避免页面抖动。
+#### **【建议】** 添加 `width` 和 `height` 属性，以避免页面抖动。
 
-#### [建议] 有下载需求的图片采用 `img` 标签实现，无下载需求的图片采用 CSS 背景图实现。
+#### **【建议】** 有下载需求的图片采用 `img` 标签实现，无下载需求的图片采用 CSS 背景图实现。
 
 解释：
 
@@ -539,7 +558,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 ### 6.1 控件标题
 
 
-#### [强制] 有文本标题的控件必须使用 `label` 标签将其与其标题相关联。
+#### **【强制】** 有文本标题的控件必须使用 `label` 标签将其与其标题相关联。
 
 解释：
 
@@ -563,7 +582,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 ### 6.2 按钮
 
 
-#### [强制] 使用 `button` 元素时必须指明 `type` 属性值。
+#### **【强制】** 使用 `button` 元素时必须指明 `type` 属性值。
 
 解释：
 
@@ -577,7 +596,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 <button type="button">取消</button>
 ```
 
-#### [建议] 尽量不要使用按钮类元素的 `name` 属性。
+#### **【建议】** 尽量不要使用按钮类元素的 `name` 属性。
 
 解释：
 
@@ -587,7 +606,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 ### 6.3 可访问性 (A11Y)
 
 
-#### [建议] 负责主要功能的按钮在 DOM 中的顺序应靠前。
+#### **【建议】** 负责主要功能的按钮在 DOM 中的顺序应靠前。
 
 解释：
 
@@ -624,7 +643,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 </div>
 ```
 
-#### [建议] 当使用 JavaScript 进行表单提交时，如果条件允许，应使原生提交功能正常工作。
+#### **【建议】** 当使用 JavaScript 进行表单提交时，如果条件允许，应使原生提交功能正常工作。
 
 解释：
 
@@ -640,7 +659,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 </form>
 ```
 
-#### [建议] 在针对移动设备开发的页面时，根据内容类型指定输入框的 `type` 属性。
+#### **【建议】** 在针对移动设备开发的页面时，根据内容类型指定输入框的 `type` 属性。
 
 解释：
 
@@ -661,7 +680,7 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 
 
 
-#### [建议] 当在现代浏览器中使用 `audio` 以及 `video` 标签来播放音频、视频时，应当注意格式。
+#### **【建议】** 当在现代浏览器中使用 `audio` 以及 `video` 标签来播放音频、视频时，应当注意格式。
 
 解释：
 
@@ -677,9 +696,9 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 * WebM
 * Ogg
 
-#### [建议] 在支持 `HTML5` 的浏览器中优先使用 `audio` 和 `video` 标签来定义音视频元素。
+#### **【建议】** 在支持 `HTML5` 的浏览器中优先使用 `audio` 和 `video` 标签来定义音视频元素。
 
-#### [建议] 使用退化到插件的方式来对多浏览器进行支持。
+#### **【建议】** 使用退化到插件的方式来对多浏览器进行支持。
 
 示例：
 
@@ -701,10 +720,10 @@ viewport meta tag 可以设置可视区域的宽度和初始缩放大小，避�
 </video>
 ```
 
-#### [建议] 只在必要的时候开启音视频的自动播放。
+#### **【建议】** 只在必要的时候开启音视频的自动播放。
 
 
-#### [建议] 在 `object` 标签内部提供指示浏览器不支持该标签的说明。
+#### **【建议】** 在 `object` 标签内部提供指示浏览器不支持该标签的说明。
 
 示例：
 

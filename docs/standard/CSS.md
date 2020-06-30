@@ -1,714 +1,497 @@
-# CSS编码规范
+# CSS 编码规范
 
-## 1 前言
+## 1 命名规范
 
-CSS 作为网页样式的描述语言，在百度一直有着广泛的应用。本文档的目标是使 CSS 代码风格保持一致，容易被理解和被维护。
+该命名规范主要解决以下问题：
 
-虽然本文档是针对 CSS 设计的，但是在使用各种 CSS 的预编译器(如 less、sass、stylus 等)时，适用的部分也应尽量遵循本文档的约定。
+* 从类名可以清晰区分出其功能作用，使页面结构清晰【命名空间、标识符】；
+* 以组件、模块的思想去写一个区块的结构，强化结构的模块化【BEM模块思想】；
+* 减少多人合作、项目耦合等情况下的命名冲突【命名空间】；
+
+### 1.1 命名思想
+
+项目如果没使用样式局部作用域框架（如vue），则使用BEM命名规则。
+
+**【强制】** 区块、模块、组件等一个整个的结构遵循BEM命名思想；
+
+当你能确定组件内最后一级的结构不会再发生变化时，最后一级可省略类名，使用两层嵌套；
+
+* `.block` 代表了更高级别的抽象或组件；
+* `.block__element` 代表`.block`的后代，用于形成一个完整的`.block`的整体；
+* `.is-` | `.has-` | `.ext-` 代表`.block`的修饰符，**不使用双中划线`--`**。
+
+相关链接：
+
+* [BEM—源自Yandex的CSS 命名方法论](http://segmentfault.com/a/1190000000391762)
+* [BEM官网](http://bem.info/)
+
+
+### 1.2 多单词连接
+
+**【强制】** 用中划线连接多个单词，例如：`news-list`；
+
+### 1.3 命名空间
+
+**【推荐】** 在合适的地方使用命名空间；
+
+* **状态**：以`is`为命名空间，**表示动态的、具有交互性质的状态**，例如：`.is-open`、`.is-active`、`.is-selected` 等；
+* **组件**：以`ui`或者`mod`为命名空间，**表示可复用、移植的组件模块**，例如：`.ui-slider`、`.mod-drop-menu`等；
+* **扩展**：以`ext`为命名空间，**表示对组件基类的视觉形态的扩展**，例如：`.ext-cover`等；
+
+### 1.4 区块命名
+
+**【推荐】** 一般区块都可以划分为头部、身体和尾部，因此建议给你的区块分别以 `hd`、`bd`、`ft`来划分；
+
+示例：
+
+```css
+.ui-card__hd {
+    margin: 0;
+}
+
+.ui-card__bd {
+    margin: 0;
+}
+
+.ui-card__ft {
+    margin: 0;
+}
+```
+
+#### 附：命名示例
+
+<img src="https://cloud.githubusercontent.com/assets/1295348/7456687/0643f254-f2b9-11e4-9b14-f1b36257f9a3.jpg" alt="命名示例" width="600">
+
+
 
 
 ## 2 代码风格
 
+### 2.1 缩进
 
-### 2.1 文件
-
-
-#### [建议] `CSS` 文件使用无 `BOM` 的 `UTF-8` 编码。
-
-解释：
-
-UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰。
-
-### 2.2 缩进
-
-
-#### [强制] 使用 `4` 个空格做为一个缩进层级，不允许使用 `2` 个空格 或 `tab` 字符。
-
+**【强制】** 使用 **2** 个空格做为一个缩进层级，不允许使用 **4** 个空格 或 **tab** 字符；
 
 示例：
 
 ```css
+/* Not so great */
+.selector {
+  margin: 0;
+}
+
+/* Better */
 .selector {
     margin: 0;
-    padding: 0;
 }
 ```
 
-### 2.3 空格
-
-
-#### [强制] `选择器` 与 `{` 之间必须包含空格。
+### 2.2 空格
+**【强制】** 选择器 与 `{ `之间必须包含空格；
 
 示例：
 
 ```css
+/* Not so great */
+.selector{
+}
+
+/* Better */
 .selector {
 }
 ```
 
-#### [强制] `属性名` 与之后的 `:` 之间不允许包含空格， `:` 与 `属性值` 之间必须包含空格。
+**【强制】** `>`、`+`、`~` 选择器的两边各保留一个空格;
 
 示例：
 
 ```css
+/* Not so great */
+main>nav {
+    padding: 10px;
+}
+label+input {
+    margin-left: 5px;
+}
+input:checked~button {
+    background-color: #69C;
+}
+
+/* Better */
+main > nav {
+    padding: 10px;
+}
+label + input {
+    margin-left: 5px;
+}
+input:checked ~ button {
+    background-color: #69C;
+}
+```
+
+**【强制】** 属性名 与之后的 `:` 之间不允许包含空格， `: `与 属性值 之间必须包含空格；
+
+示例：
+
+```css
+/* Not so great */
+margin :0;
+
+/* Better */
 margin: 0;
 ```
 
-#### [强制] `列表型属性值` 书写在单行时，`,` 后必须跟一个空格。
+**【强制】** 列表型属性值 书写在单行时，`, `后必须跟一个空格；
 
 示例：
 
 ```css
+/* Not so great */
+font-family: Arial,sans-serif;
+box-shadow: 0 0 2px rgba(0,128,0,.3);
+
+/* Better */
 font-family: Arial, sans-serif;
+box-shadow: 0 0 2px rgba(0, 128, 0, .3);
 ```
 
-### 2.4 行长度
-
-
-#### [强制] 每行不得超过 `120` 个字符，除非单行不可分割。
-
-解释：
-
-常见不可分割的场景为URL超长。
-
-
-#### [建议] 对于超长的样式，在样式值的 `空格` 处或 `,` 后换行，建议按逻辑分组。
+### 2.3 选择器
+**【强制】** 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行；
 
 示例：
 
 ```css
-/* 不同属性值按逻辑分组 */
-background:
-    transparent url(aVeryVeryVeryLongUrlIsPlacedHere)
-    no-repeat 0 0;
+/* Not so great */
+.post, .page, .comment {
+    line-height: 1.5;
+}
 
-/* 可重复多次的属性，每次重复一行 */
-background-image:
-    url(aVeryVeryVeryLongUrlIsPlacedHere)
-    url(anotherVeryVeryVeryLongUrlIsPlacedHere);
-
-/* 类似函数的属性值可以根据函数调用的缩进进行 */
-background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.04, rgb(88,94,124)),
-    color-stop(0.52, rgb(115,123,162))
-);
-```
-
-### 2.5 选择器
-
-
-#### [强制] 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行。
-
-示例：
-
-```css
-/* good */
+/* Better */
 .post,
 .page,
 .comment {
     line-height: 1.5;
 }
-
-/* bad */
-.post, .page, .comment {
-    line-height: 1.5;
-}
 ```
 
-#### [强制] `>`、`+`、`~` 选择器的两边各保留一个空格。
+### 2.4 属性
+**【强制】** 属性定义必须另起一行；
 
 示例：
 
 ```css
-/* good */
-main > nav {
-    padding: 10px;
-}
+/* Not so great */
+.selector { margin: 0; padding: 0;}
 
-label + input {
-    margin-left: 5px;
-}
-
-input:checked ~ button {
-    background-color: #69C;
-}
-
-/* bad */
-main>nav {
-    padding: 10px;
-}
-
-label+input {
-    margin-left: 5px;
-}
-
-input:checked~button {
-    background-color: #69C;
-}
-```
-
-#### [强制] 属性选择器中的值必须用双引号包围。
-
-解释：
-
-不允许使用单引号，不允许不使用引号。
-
-
-示例：
-
-```css
-/* good */
-article[character="juliet"] {
-    voice-family: "Vivien Leigh", victoria, female;
-}
-
-/* bad */
-article[character='juliet'] {
-    voice-family: "Vivien Leigh", victoria, female;
-}
-```
-
-### 2.6 属性
-
-
-#### [强制] 属性定义必须另起一行。
-
-示例：
-
-```css
-/* good */
+/* Better */
 .selector {
     margin: 0;
     padding: 0;
 }
-
-/* bad */
-.selector { margin: 0; padding: 0; }
 ```
 
-#### [强制] 属性定义后必须以分号结尾。
+**【强制】** 属性定义后必须以分号结尾；
 
 示例：
 
 ```css
-/* good */
-.selector {
-    margin: 0;
-}
-
-/* bad */
+/* Not so great */
 .selector {
     margin: 0
 }
+
+/* Better */
+.selector {
+    margin: 0;
+}
 ```
 
 
 
 
 
-
-## 3 通用
-
-
-
+## 3. 通用
 
 ### 3.1 选择器
 
-
-#### [强制] 如无必要，不得为 `id`、`class` 选择器添加类型选择器进行限定。
-
-解释：
+**【强制】** 如无必要，不得为`id`、`class`选择器添加 *类型选择器* 进行限定；
 
 在性能和维护性上，都有一定的影响。
 
-
 示例：
 
-
 ```css
-/* good */
-#error,
-.danger-message {
-    font-color: #c00;
-}
-
-/* bad */
+/* Not so great */
 dialog#error,
 p.danger-message {
     font-color: #c00;
 }
+
+/* Better */
+#error,
+.danger-message {
+    font-color: #c00;
+}
 ```
 
-#### [建议] 选择器的嵌套层级应不大于 `3` 级，位置靠后的限定条件应尽可能精确。
+**【建议】** 选择器的嵌套层级应该不大于 **3** 级，位置靠后的限定条件应可能精确；
+
+在性能和维护性上，都有一定的影响。
 
 示例：
 
 ```css
-/* good */
-#username input {}
-.comment .avatar {}
+/* Not so great */
+.comment ul li a span {}
+#top-hero .hero-avatar li.avatar .pic em {}
 
-/* bad */
-.page .header .login #username input {}
-.comment div * {}
+/* Better */
+.comment .date {}
+#top-hero .pic em {}
 ```
 
+### 3.2 属性
+
+### 3.2.1 属性书写顺序
+
+**【建议】** 同一 rule set 下的属性在书写时，应按功能进行分组，并以 Formatting Model > Box Model > Typographic > Visual 的顺序书写，以提高代码的可读性。
+
+1. Positioning Model 布局方式、位置；相关属性包括：`position / top / right / bottom / left / z-index  / display / float / ...`
+2. Box model 盒模型；相关属性包括：`width / height / padding / margin / border / overflow /  ...`
+3. Typographic 文本排版；相关属性包括：`font / line-height / text-align / word-wrap / ...`
+4. Visual 视觉外观；相关属性包括：`color / background / list-style / transform / animation / transition  / ...`
+5. 如果包含 content 属性，应放在最前面；
+
+Positioning 处在第一位，因为他可以使一个元素脱离正常文本流，并且覆盖盒模型相关的样式。盒模型紧跟其后，因为他决定了一个组件的大小和位置。其他属性只在组件 内部 起作用或者不会对前面两种情况的结果产生影响，所以他们排在后面。
+
+详情资料 [Twitter的strictPropertyOrder](https://github.com/twitter/recess/blob/master/lib/lint/strict-property-order.js#L36)
 
 
-### 3.2 属性缩写
+### 3.2.2 属性引号
 
-
-
-#### [建议] 在可以使用缩写的情况下，尽量使用属性缩写。
+**【强制】** 属性选择器中的值必须用双引号包围。不允许使用单引号，不允许不使用引号。
 
 示例：
 
 ```css
-/* good */
-.post {
-    font: 12px/1.5 arial, sans-serif;
+/* Not so great */
+article[character='juliet'] {
+    voice-family: "Vivien Leigh", victoria, female
 }
 
-/* bad */
-.post {
-    font-family: arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
+/* Better */
+article[character="juliet"] {
+    voice-family: "Vivien Leigh", victoria, female
 }
 ```
 
-#### [建议] 使用 `border` / `margin` / `padding` 等缩写时，应注意隐含值对实际数值的影响，确实需要设置多个方向的值时才使用缩写。
+### 3.2.3 属性简写
 
-解释：
+简写形式可以在一定程度上压缩样式，但并不意味着你可以对所有可以简写的属性声明都使用简写。过度使用简写形式的属性声明会导致代码混乱，会对属性值带来不必要的覆盖从而引起意外的副作用，并且不能充分利用CSS的继承。常见的滥用简写属性声明的情况如下：
 
-`border` / `margin` / `padding` 等缩写会同时设置多个属性的值，容易覆盖不需要覆盖的设定。如某些方向需要继承其他声明的值，则应该分开设置。
+* `padding`
+* `margin`
+* `font`
+* `background`
+* `border`
+* `border-radius`
 
-
-示例：
-
+如果你只需定义其中的一两个属性，而不是全部，尽量分开来写：
 ```css
-/* centering <article class="page"> horizontally and highlight featured ones */
-article {
-    margin: 5px;
-    border: 1px solid #999;
+/* Better */
+.selector {
+    margin-bottom: 10px;
+    background-color: red;
+    background-image: url(image.jpg);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
-/* good */
-.page {
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.featured {
-    border-color: #69c;
-}
-
-/* bad */
-.page {
-    margin: 5px auto; /* introducing redundancy */
-}
-
-.featured {
-    border: 1px solid #69c; /* introducing redundancy */
+/* Not so great */
+.selector {
+    margin: 0 0 10px;
+    background: red;
+    background: url(image.jpg);
+    border-radius: 3px 3px 0 0;
 }
 ```
 
-
-### 3.3 属性书写顺序
-
-
-#### [建议] 同一 rule set 下的属性在书写时，应按功能进行分组，并以 **Formatting Model（布局方式、位置） > Box Model（尺寸） > Typographic（文本相关） > Visual（视觉效果）** 的顺序书写，以提高代码的可读性。
-
-解释：
-
-- Formatting Model 相关属性包括：`position` / `top` / `right` / `bottom` / `left` / `float` / `display` / `overflow` 等
-- Box Model 相关属性包括：`border` / `margin` / `padding` / `width` / `height` 等
-- Typographic 相关属性包括：`font` / `line-height` / `text-align` / `word-wrap` 等
-- Visual 相关属性包括：`background` / `color` / `transition` / `list-style` 等
-
-另外，如果包含 `content` 属性，应放在最前面。
-
-
-示例：
-
-```css
-.sidebar {
-    /* formatting model: positioning schemes / offsets / z-indexes / display / ...  */
-    position: absolute;
-    top: 50px;
-    left: 0;
-    overflow-x: hidden;
-
-    /* box model: sizes / margins / paddings / borders / ...  */
-    width: 200px;
-    padding: 5px;
-    border: 1px solid #ddd;
-
-    /* typographic: font / aligns / text styles / ... */
-    font-size: 14px;
-    line-height: 20px;
-
-    /* visual: colors / shadows / gradients / ... */
-    background: #f5f5f5;
-    color: #333;
-    -webkit-transition: color 1s;
-       -moz-transition: color 1s;
-            transition: color 1s;
-}
-```
-
-
-### 3.4 清除浮动
-
-
-
-#### [建议] 当元素需要撑起高度以包含内部的浮动元素时，通过对伪类设置 `clear` 或触发 `BFC` 的方式进行 `clearfix`。尽量不使用增加空标签的方式。
-
-解释：
-
-触发 BFC 的方式很多，常见的有：
-
-* float 非 none
-* position 非 static
-* overflow 非 visible
-
-如希望使用更小副作用的清除浮动方法，参见 [A new micro clearfix hack](http://nicolasgallagher.com/micro-clearfix-hack/) 一文。
-
-另需注意，对已经触发 BFC 的元素不需要再进行 clearfix。
-
-
-### 3.5 !important
-
-
-#### [建议] 尽量不使用 `!important` 声明。
-
-
-#### [建议] 当需要强制指定样式且不允许任何场景覆盖时，通过标签内联和 `!important` 定义样式。
-
-解释：
-
-必须注意的是，仅在设计上 `确实不允许任何其它场景覆盖样式` 时，才使用内联的 `!important` 样式。通常在第三方环境的应用中使用这种方案。下面的 `z-index` 章节是其中一个特殊场景的典型样例。
-
-
-
-### 3.6 z-index
-
-
-
-#### [建议] 将 `z-index` 进行分层，对文档流外绝对定位元素的视觉层级关系进行管理。
-
-解释：
-
-同层的多个元素，如多个由用户输入触发的 Dialog，在该层级内使用相同的 `z-index` 或递增 `z-index`。
-
-建议每层包含100个 `z-index` 来容纳足够的元素，如果每层元素较多，可以调整这个数值。
-
-
-#### [建议] 在可控环境下，期望显示在最上层的元素，`z-index` 指定为 `999999`。
-
-解释：
-
-可控环境分成两种，一种是自身产品线环境；还有一种是可能会被其他产品线引用，但是不会被外部第三方的产品引用。
-
-不建议取值为 `2147483647`。以便于自身产品线被其他产品线引用时，当遇到层级覆盖冲突的情况，留出向上调整的空间。
-
-
-#### [建议] 在第三方环境下，期望显示在最上层的元素，通过标签内联和 `!important`，将 `z-index` 指定为 `2147483647`。
-
-解释：
-
-第三方环境对于开发者来说完全不可控。在第三方环境下的元素，为了保证元素不被其页面其他样式定义覆盖，需要采用此做法。
 
 
 
 
 ## 4 值与单位
 
-
 ### 4.1 文本
 
-
-#### [强制] 文本内容必须用双引号包围。
-
-解释：
+**【强制】** 文本内容必须用双引号包围，不允许使用单引号；
 
 文本类型的内容可能在选择器、属性值等内容中。
-
 
 示例：
 
 ```css
-/* good */
-html[lang|="zh"] q:before {
-    font-family: "Microsoft YaHei", sans-serif;
-    content: "“";
-}
-
-html[lang|="zh"] q:after {
-    font-family: "Microsoft YaHei", sans-serif;
-    content: "”";
-}
-
-/* bad */
+/* Not so great */
 html[lang|=zh] q:before {
     font-family: 'Microsoft YaHei', sans-serif;
     content: '“';
 }
 
-html[lang|=zh] q:after {
+/* Better */
+html[lang|="zh"] q:after {
     font-family: "Microsoft YaHei", sans-serif;
-    content: "”";
+    content: "“";
 }
 ```
 
 ### 4.2 数值
 
-
-#### [强制] 当数值为 0 - 1 之间的小数时，省略整数部分的 `0`。
+**【强制】** 当数值为 **0 - 1** 之间的小数时，省略整数部分的 **0**；
 
 示例：
 
 ```css
-/* good */
-panel {
-    opacity: .8;
+/* Not so great */
+.selector {
+    opacity: 0.8;
 }
 
-/* bad */
-panel {
-    opacity: 0.8;
+/* Better */
+.selector {
+    opacity: .8;
 }
 ```
 
-### 4.3 url()
+### 4.3 长度
 
-
-#### [强制] `url()` 函数中的路径不加引号。
+**【强制】** 长度为 **0** 时须省略单位 (也只有长度单位可省)；
 
 示例：
 
 ```css
-body {
+/* Not so great */
+.selector {
+    margin: 0px 10px;
+}
+
+/* Better */
+.selector {
+    margin: 0 10px;
+}
+```
+
+### 4.4 url()
+
+**【强制】** url() 函数中的路径不加引号；
+
+示例：
+
+```css
+/* Not so great */
+.selector {
+    background: url("bg.png");
+}
+
+/* Better */
+.selector {
     background: url(bg.png);
 }
 ```
 
-
-#### [建议] `url()` 函数中的绝对路径可省去协议名。
-
-
-示例：
-
-```css
-body {
-    background: url(//baidu.com/img/bg.png) no-repeat 0 0;
-}
-```
-
-
-### 4.4 长度
-
-
-#### [强制] 长度为 `0` 时须省略单位。 (也只有长度单位可省)
-
-示例：
-
-```css
-/* good */
-body {
-    padding: 0 5px;
-}
-
-/* bad */
-body {
-    padding: 0px 5px;
-}
-```
-
-
 ### 4.5 颜色
 
-
-#### [强制] RGB颜色值必须使用十六进制记号形式 `#rrggbb`。不允许使用 `rgb()`。 
-
-解释：
-
-带有alpha的颜色信息可以使用 `rgba()`。使用 `rgba()` 时每个逗号后必须保留一个空格。
-
+**【强制】** RGB颜色值必须使用十六进制记号形式 `#rrggbb`，不允许使用 `rgb()`，带有alpha的颜色信息可以使用 `rgba()`；颜色值不允许使用命名色值；
 
 示例：
 
 ```css
-/* good */
-.success {
-    box-shadow: 0 0 2px rgba(0, 128, 0, .3);
-    border-color: #008000;
-}
-
-/* bad */
-.success {
+/* Not so great */
+.selector {
     box-shadow: 0 0 2px rgba(0,128,0,.3);
     border-color: rgb(0, 128, 0);
+    color: gray;
+}
+
+/* Better */
+.selector {
+    box-shadow: 0 0 2px rgba(0, 128, 0, .3);
+    border-color: #008000;
+    color: #999;
 }
 ```
 
-#### [强制] 颜色值可以缩写时，必须使用缩写形式。
+**【建议】** 颜色值中的英文字符采用小写，至少要保证同一项目内一致；
 
 示例：
 
 ```css
-/* good */
-.success {
-    background-color: #aca;
+/* Not so great */
+.selector {
+    color: #0073AA;
 }
 
-/* bad */
-.success {
-    background-color: #aaccaa;
+/* Better */
+.selector {
+    color: #0073aa;
 }
 ```
 
-#### [强制] 颜色值不允许使用命名色值。
+### 4.6 2D位置
+
+**【强制】** 必须同时给出水平和垂直方向的位置；
+
+2D 位置初始值为 0% 0%，但在只有一个方向的值时，另一个方向的值会被解析为 center。为避免理解上的困扰，应同时给出两个方向的值。 [background-position属性值的定义](http://www.w3.org/TR/CSS21/colors.html#propdef-background-position)
 
 示例：
 
 ```css
-/* good */
-.success {
-    color: #90ee90;
-}
-
-/* bad */
-.success {
-    color: lightgreen;
-}
-```
-
-#### [建议] 颜色值中的英文字符采用小写。如不用小写也需要保证同一项目内保持大小写一致。
-
-
-示例：
-
-```css
-/* good */
-.success {
-    background-color: #aca;
-    color: #90ee90;
-}
-
-/* good */
-.success {
-    background-color: #ACA;
-    color: #90EE90;
-}
-
-/* bad */
-.success {
-    background-color: #ACA;
-    color: #90ee90;
-}
-```
-
-
-### 4.6 2D 位置
-
-
-#### [强制] 必须同时给出水平和垂直方向的位置。
-
-解释：
-
-2D 位置初始值为 `0% 0%`，但在只有一个方向的值时，另一个方向的值会被解析为 center。为避免理解上的困扰，应同时给出两个方向的值。[background-position属性值的定义](http://www.w3.org/TR/CSS21/colors.html#propdef-background-position)
-
-
-示例：
-
-```css
-/* good */
-body {
-    background-position: center top; /* 50% 0% */
-}
-
-/* bad */
-body {
+/* Not so great */
+.selector {
     background-position: top; /* 50% 0% */
 }
+
+/* Better */
+.selector {
+    background-position: center top; /* 50% 0% */
+}
 ```
 
 
 
 
 
-## 5 文本编排
-
+## 5. 文本排版
 
 ### 5.1 字体族
 
+**【强制】** `font-family` 属性中的字体族名称应使用字体的**英文** Family Name，其中如有空格，须放置在引号中；
 
-#### [强制] `font-family` 属性中的字体族名称应使用字体的英文 `Family Name`，其中如有空格，须放置在引号中。
+常见的字体族名称如下：
 
-解释：
+| 字体 | 操作系统 | Family Name |
+|:----|:------|:----|
+|宋体 (中易宋体) |  Windows | SimSun |
+|黑体 (中易黑体) |  Windows | SimHei |
+|微软雅黑       |  Windows | Microsoft YaHei |
+|微软正黑 | Windows | Microsoft JhengHei |
+|华文黑体 | Mac/iOS | STHeiti |
+|冬青黑体 | Mac/iOS | Hiragino Sans GB |
+|文泉驿正黑 | Linux | WenQuanYi Zen Hei |
+|文泉驿微米黑 | Linux | WenQuanYi Micro Hei |
 
-所谓英文 Family Name，为字体文件的一个元数据，常见名称如下：
+**【强制】** `font-family` 应当遵循以下顺序：
 
-字体 | 操作系统 | Family Name
------|----------|------------
-宋体 (中易宋体) | Windows | SimSun
-黑体 (中易黑体) | Windows | SimHei
-微软雅黑 | Windows | Microsoft YaHei
-微软正黑 | Windows | Microsoft JhengHei
-华文黑体 | Mac/iOS | STHeiti
-冬青黑体 | Mac/iOS | Hiragino Sans GB
-文泉驿正黑 | Linux | WenQuanYi Zen Hei
-文泉驿微米黑 | Linux | WenQuanYi Micro Hei
+1. 西文字体在前，中文字体在后；
+2. 效果佳 (质量高/更能满足需求) 的字体在前，效果一般的字体在后的顺序编写；
+3. 最后必须指定一个通用字体族( serif / sans-serif )；
 
+详细说明可参考 [如何保证网页的字体在各平台都尽量显示为最高质量的黑体？](http://www.zhihu.com/question/19911793/answer/13329819)
 
-示例：
-
-```css
-h1 {
-    font-family: "Microsoft YaHei";
-}
-```
-
-
-#### [强制] `font-family` 按「西文字体在前、中文字体在后」、「效果佳 (质量高/更能满足需求) 的字体在前、效果一般的字体在后」的顺序编写，最后必须指定一个通用字体族( `serif` / `sans-serif` )。
-
-解释：
-
-更详细说明可参考[本文](http://www.zhihu.com/question/19911793/answer/13329819)。
+**【强制】** `font-family` 不区分大小写，但在同一个项目中，同样的 Family Name 大小写必须统一；
 
 示例：
 
 ```css
-/* Display according to platform */
-.article {
-    font-family: Arial, sans-serif;
-}
-
-/* Specific for most platforms */
-h1 {
-    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
-}
-```
-
-#### [强制] `font-family` 不区分大小写，但在同一个项目中，同样的 `Family Name` 大小写必须统一。
-
-示例：
-
-```css
-/* good */
-body {
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    font-family: Arial, "Microsoft YaHei", sans-serif;
-}
-
-/* bad */
+/* Not so great */
 body {
     font-family: arial, sans-serif;
 }
@@ -716,144 +499,106 @@ body {
 h1 {
     font-family: Arial, "Microsoft YaHei", sans-serif;
 }
+
+/* Better */
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+}
 ```
 
-### 5.2 字号
+### 5.2 字重
 
+**【强制】** `font-weight` 属性必须使用数值方式描述；
 
-#### [强制] 需要在 Windows 平台显示的中文内容，其字号应不小于 `12px`。
+CSS 的字重分 100 – 900 共九档，但目前受字体本身质量和浏览器的限制，实际上支持 400 和 700 两档，分别等价于关键词 normal 和 bold。
 
-解释：
+浏览器本身使用一系列[启发式规则](http://www.w3.org/TR/CSS21/fonts.html#propdef-font-weight)来进行匹配，在 &gt;700 时一般匹配字体的 Regular 字重，&gt;=700 时匹配 Bold 字重。
 
-由于 Windows 的字体渲染机制，小于 `12px` 的文字显示效果极差、难以辨认。
-
-
-### 5.3 字体风格
-
-
-#### [建议] 需要在 Windows 平台显示的中文内容，不要使用除 `normal` 外的 `font-style`。其他平台也应慎用。
-
-解释：
-
-由于中文字体没有 `italic` 风格的实现，所有浏览器下都会 fallback 到 `obilique` 实现 (自动拟合为斜体)，小字号下 (特别是 Windows 下会在小字号下使用点阵字体的情况下) 显示效果差，造成阅读困难。
-
-
-### 5.4 字重
-
-
-#### [强制] `font-weight` 属性必须使用数值方式描述。
-
-解释：
-
-CSS 的字重分 100 – 900 共九档，但目前受字体本身质量和浏览器的限制，实际上支持 `400` 和 `700` 两档，分别等价于关键词 `normal` 和 `bold`。
-
-浏览器本身使用一系列[启发式规则](http://www.w3.org/TR/CSS21/fonts.html#propdef-font-weight)来进行匹配，在 `<700` 时一般匹配字体的 Regular 字重，`>=700` 时匹配 Bold 字重。
-
-但已有浏览器开始支持 `=600` 时匹配 Semibold 字重 (见[此表](http://justineo.github.io/slideshows/font/#/3/15))，故使用数值描述增加了灵活性，也更简短。
+但已有浏览器开始支持 =600 时匹配 Semibold 字重 ([见此表](http://justineo.github.io/slideshows/font/#/3/15))，故使用数值描述增加了灵活性，也更简短。
 
 示例：
 
 ```css
-/* good */
-h1 {
-    font-weight: 700;
-}
-
-/* bad */
-h1 {
+/* Not so great */
+.selector {
     font-weight: bold;
 }
-```
 
-### 5.5 行高
-
-
-#### [建议] `line-height` 在定义文本段落时，应使用数值。
-
-解释：
-
-将 `line-height` 设置为数值，浏览器会基于当前元素设置的 `font-size` 进行再次计算。在不同字号的文本段落组合中，能达到较为舒适的行间间隔效果，避免在每个设置了 `font-size` 都需要设置 `line-height`。
-
-当 `line-height` 用于控制垂直居中时，还是应该设置成与容器高度一致。
-
-
-示例：
-
-```css
-.container {
-    line-height: 1.5;
+/* Better */
+.selector {
+    font-weight: 700;
 }
 ```
+
 
 
 
 ## 6 变换与动画
 
+**【强制】** 使用 `transition` 定义属性时应遵循以下顺序：
 
+1. `[ transition-property ]`：检索或设置对象中的参与过渡的属性；
+2. `[ transition-duration ]`：检索或设置对象过渡的持续时间；
+3. `[ transition-timing-function ]`：检索或设置对象中过渡的动画类型；
+4. `[ transition-delay ]`：检索或设置对象延迟过渡的时间；
 
-#### [强制] 使用 `transition` 时应指定 `transition-property`。
+`transition：[ transition-property ] || [ transition-duration ] || [ transition-timing-function ] || [ transition-delay ]`
+
+如果顺序错乱，在某些安卓浏览器上会让动画失效。
 
 示例：
 
 ```css
-/* good */
-.box {
-    transition: color 1s, border-color 1s;
+/* Not so great */
+.selector {
+    transition: color .2s 0 ease-in;
 }
 
-/* bad */
-.box {
-    transition: all 1s;
+/* Better */
+.selector {
+    transition: color .2s ease-in 0;
 }
 ```
 
-#### [建议] 尽可能在浏览器能高效实现的属性上添加过渡和动画。
+**【建议】** 尽可能在浏览器能高效实现的属性上添加过渡和动画：
 
-解释：
-
-见[本文](http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/)，在可能的情况下应选择这样四种变换：
+在可能的情况下应选择这样四种变换：
 
 * `transform: translate(npx, npx);`
 * `transform: scale(n);`
 * `transform: rotate(ndeg);`
 * `opacity: 0..1;`
 
-典型的，可以使用 `translate` 来代替 `left` 作为动画属性。
+详见 [High Performance Animations](http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/)
+
+
+
+
+## 7 媒体查询
+
+**【强制】** `Media Query` 不得单独编排，必须与相关的规则一起定义；
+
+不要将他们一起放到一个独立的样式文件中，或者丢在文档的最底部，这样做只会让大家以后更容易忘记他们。
 
 示例：
 
 ```css
-/* good */
-.box {
-    transition: transform 1s;
+/* Not so great */
+/* header styles */
+/* main styles */
+/* footer styles */
+
+@media (...) {
+    /* header styles */
+    /* main styles */
+    /* footer styles */
 }
-.box:hover {
-    transform: translate(20px); /* move right for 20px */
-}
 
-/* bad */
-.box {
-    left: 0;
-    transition: left 1s;
-}
-.box:hover {
-    left: 20px; /* move right for 20px */
-}
-```
-
-
-
-
-## 7 响应式
-
-
-
-#### [强制] `Media Query` 不得单独编排，必须与相关的规则一起定义。
-
-示例：
-
-```css
-/* Good */
+/* Better */
 /* header styles */
 @media (...) {
     /* header styles */
@@ -868,113 +613,87 @@ h1 {
 @media (...) {
     /* footer styles */
 }
-
-
-/* Bad */
-/* header styles */
-/* main styles */
-/* footer styles */
-
-@media (...) {
-    /* header styles */
-    /* main styles */
-    /* footer styles */
-}
 ```
-
-#### [强制] `Media Query` 如果有多个逗号分隔的条件时，应将每个条件放在单独一行中。
-
-示例：
-
-```css
-@media
-(-webkit-min-device-pixel-ratio: 2), /* Webkit-based browsers */
-(min--moz-device-pixel-ratio: 2),    /* Older Firefox browsers (prior to Firefox 16) */
-(min-resolution: 2dppx),             /* The standard way */
-(min-resolution: 192dpi) {           /* dppx fallback */
-    /* Retina-specific stuff here */
-}
-```
-
-#### [建议] 尽可能给出在高分辨率设备 (Retina) 下效果更佳的样式。
-
-
 
 ## 8 兼容性
 
-
 ### 8.1 属性前缀
 
+**【强制】** 带私有前缀的属性由长到短排列，按冒号位置对齐；
 
-#### [强制] 带私有前缀的属性由长到短排列，按冒号位置对齐。
-
-解释：
-
-标准属性放在最后，按冒号对齐方便阅读，也便于在编辑器内进行多行编辑。
-
+标准属性放在最后，按冒号对齐方便阅读与编辑。
 
 示例：
 
 ```css
-.box {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+/* Not so great */
+.selector {
+    transition: color .2s ease-in 0;
+    -webkit-transition: color .2s ease-in 0;
+    -moz-transition: color .2s ease-in 0;
+}
+
+/* Better */
+.selector {
+    -webkit-transition: color .2s ease-in 0;
+       -moz-transition: color .2s ease-in 0;
+            transition: color .2s ease-in 0;
 }
 ```
 
+### 8.2 hack
 
-### 8.2 Hack
+**【建议】** 如果有其他解决方案，请不要使用hack；
 
 
-#### [建议] 需要添加 `hack` 时应尽可能考虑是否可以采用其他方式解决。
 
-解释：
 
-如果能通过合理的 HTML 结构或使用其他的 CSS 定义达到理想的样式，则不应该使用 hack 手段解决问题。通常 hack 会导致维护成本的增加。
+## 9 代码注释
 
-#### [建议] 尽量使用 `选择器 hack` 处理兼容性，而非 `属性 hack`。
+代码是由人编写并维护的。请确保你的代码能够自描述、注释良好并且易于他人理解。好的代码注释能够传达上下文关系和代码目的。不要简单地重申组件或 class 名称。
 
-解释：
+### 9.1 单行注释
 
-尽量使用符合 CSS 语法的 selector hack，可以避免一些第三方库无法识别 hack 语法的问题。
-
+**【强制】** 星号与内容之间必须保留一个空格；
 
 示例：
 
 ```css
-/* IE 7 */
-*:first-child + html #header {
-    margin-top: 3px;
-    padding: 5px;
-}
-
-/* IE 6 */
-* html #header {
-    margin-top: 5px;
-    padding: 4px;
-}
+/* 新闻中心表格隔行变色 */
 ```
 
+### 9.2 多行注释
 
-#### [建议] 尽量使用简单的 `属性 hack`。
+**【强制】** 星号要一列对齐，星号与内容之间必须保留一个空格；
 
 示例：
 
 ```css
-.box {
-    _display: inline; /* fix double margin */
-    float: left;
-    margin-left: 20px;
-}
-
-.container {
-    overflow: hidden;
-    *zoom: 1; /* triggering hasLayout */
-}
+/**
+ * Sometimes you need to include optional context for the entire component. Do that up here if it's important enough.
+ */
 ```
+ 
+### 9.3 文件注释
 
-### 8.3 Expression
+**【强制】** 文件顶部必须包含文件注释，用 `@file` 标识文件说明。星号要一列对齐，星号与内容之间必须保留一个空格，标识符冒号与内容之间必须保留一个空格；
+
+```css
+/**
+ * @file: 文件概要描述
+ * @author: author-name(mail-name@domain.com)
+ *          author-name2(mail-name2@domain.com)
+ * @update: 2015-04-29 00:02:45
+ */
+```
+* `@update`为可选项，建议每次改动都更新一下；
+* 当该业务项目主要由固定的一个或多个人负责时，需要添加`@author`标识，一方面是尊重劳动成果，另一方面方便在需要时快速定位责任人；
 
 
-#### [强制] 禁止使用 `Expression`。
+
+
+参考资料： 
+
+1. [bootcss编码规范](http://codeguide.bootcss.com/)
+2. [豆瓣CSS Code Guideline](https://github.com/kejun/CSS-Code-Guideline)
+2. [spec css style guide](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)

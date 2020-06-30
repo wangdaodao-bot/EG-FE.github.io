@@ -42,12 +42,8 @@ module.exports = {
         link: '/guide/',
       },
       {
-        text: 'Config',
-        link: '/config/'
-      },
-      {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
+        text: '勘误',
+        link: 'https://github.com/EG-FE/EG-FE.github.io/issues/new'
       }
     ],
     sidebar: {
@@ -61,7 +57,8 @@ module.exports = {
             'CSS',
             'JavaScript',
             'JSON',
-            'VUE'
+            'VUE',
+            'CopyWriter',
           ]
         }
       ],
@@ -70,8 +67,7 @@ module.exports = {
           title: '指南',
           collapsable: false,
           children: [
-            '',
-            'using-vue',
+            ''
           ]
         }
       ],
