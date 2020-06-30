@@ -1,26 +1,23 @@
-name: github pages
+name: blog deploy
 
-on:
+on: 
   push:
-    branches:
-    - master
+    branches: 
+      - master
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v1
-    - run: npm ci # 相当于npm install
+    - run: npm ci
+    - run: npm install vuepress
     - run: npm run build
-    - run: echo 'fe.const.team' > CNAME
-
-    #发布到mybells.github.io/master
-    - name: Deploy EG-FE.github.io/master
-      uses: peaceiris/actions-gh-pages@v2
+    
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
-        EXTERNAL_REPOSITORY: EG-FE/EG-FE.github.io 
+        ACTIONS_DEPLOY_KEY: ${{secrets.ACCESS_TOKEN}}
         PUBLISH_BRANCH: master
         PUBLISH_DIR: docs/.vuepress/dist
-      with:
-          emptyCommits: false
