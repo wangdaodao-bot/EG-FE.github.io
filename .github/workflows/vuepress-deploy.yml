@@ -1,23 +1,18 @@
-name: blog deploy
-
-on: 
-  push:
-    branches: 
-      - master
-
+name: Build and Deploy
+on: [push]
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: npm install vuepress
-    - run: npm run build
-    
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
+    - name: Checkout
+      uses: actions/checkout@v2.3.1
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@1.0.1
       env:
-        ACTIONS_DEPLOY_KEY: ${{secrets.ACCESS_TOKEN}}
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: docs/.vuepress/dist
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: username/repo
+        TARGET_BRANCH: master
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: doc/.vuepress/dist/
+        CNAME: https://fe.const.team/
