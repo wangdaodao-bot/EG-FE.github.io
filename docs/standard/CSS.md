@@ -60,8 +60,7 @@
 
 #### 附：命名示例
 
-<img :src="$withBase('/imgs/standard/css/css-name.jpg')" alt="命名示例" width="600">
-
+![命名示例](/imgs/standard/css/css-name.jpg)
 
 ## 2 代码风格
 

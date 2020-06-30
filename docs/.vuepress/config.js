@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
-  description: 'Talk is cheap. Show me the code.',
+  description: description,
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -83,8 +83,17 @@ module.exports = {
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
-  plugins: [
-    '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-  ]
+  plugins: {
+    '@vuepress/back-to-top':{},
+    '@vuepress/medium-zoom': {
+      selector: 'img'
+    },
+    '@vuepress/last-updated': {
+      transformer: (timestamp) => {
+        const moment = require('moment')
+        moment.locale('zh-cn')
+        return moment(timestamp).fromNow()
+      }
+    }
+  }
 }
