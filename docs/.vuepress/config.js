@@ -86,7 +86,7 @@ module.exports = {
   plugins: {
     '@vuepress/back-to-top':{},
     '@vuepress/medium-zoom': {
-      selector: 'img'
+      selector: '.page img'
     },
     '@vuepress/last-updated': {
       transformer: (timestamp) => {

@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: https://v1.vuepress.vuejs.org/hero.png
+heroImage: /imgs/home/code.png
 tagline: Talk is cheap. Show me the code.
 actionText: 快速查看
 actionLink: /standard/
