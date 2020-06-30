@@ -1,18 +1,26 @@
-name: Build and Deploy
-on: [push]
+name: github pages
+
+on:
+  push:
+    branches:
+    - master
+
 jobs:
-  build-and-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+    - uses: actions/checkout@v1
+    - run: npm ci # 相当于npm install
+    - run: npm run build
+    - run: echo 'fe.const.team' > CNAME
 
-    - name: vuepress-deploy
-      uses: wangdaodao/EG-FE.github.io@develop
+    #发布到mybells.github.io/master
+    - name: Deploy EG-FE.github.io/master
+      uses: peaceiris/actions-gh-pages@v2
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        TARGET_REPO: username/repo
-        TARGET_BRANCH: master
-        BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: doc/.vuepress/dist/
-        CNAME: https://fe.const.team/
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
+        EXTERNAL_REPOSITORY: EG-FE/EG-FE.github.io 
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: docs/.vuepress/dist
+      with:
+          emptyCommits: false
