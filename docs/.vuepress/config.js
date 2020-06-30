@@ -27,11 +27,17 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
-    editLinks: false,
-    docsDir: '',
-    editLinkText: '',
-    lastUpdated: false,
+    repo: 'EG-FE/EG-FE.github.io',
+    editLinks: true,
+    // 假如你的文档仓库和项目本身不在一个仓库：
+    docsRepo: 'EG-FE/EG-FE.github.io',
+    // 假如文档不是放在仓库的根目录下：
+    docsDir: 'docs',
+    // 假如文档放在一个特定的分支下：
+    docsBranch: 'develop',
+    
+    editLinkText: '帮助我们改善此页面',
+    lastUpdated: '文档更新时间',
     nav: [
       {
         text: '规范',
@@ -42,8 +48,8 @@ module.exports = {
         link: '/guide/',
       },
       {
-        text: '勘误',
-        link: 'https://github.com/EG-FE/EG-FE.github.io/issues/new'
+        text: '组件',
+        link: 'https://uxd.const.team/'
       }
     ],
     sidebar: {

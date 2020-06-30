@@ -197,19 +197,19 @@ alert(document.getElementById('foo').tagName);
 
 下面是常见标签语义
 
-- p - 段落
-- h1,h2,h3,h4,h5,h6 - 层级标题
-- strong,em - 强调
-- ins - 插入
-- del - 删除
-- abbr - 缩写
-- code - 代码标识
-- cite - 引述来源作品的标题
-- q - 引用
-- blockquote - 一段或长篇引用
-- ul - 无序列表
-- ol - 有序列表
-- dl,dt,dd - 定义列表
+- `p` - 段落
+- `h1` , `h2` , `h3` , `h4` , `h5` , `h6` - 层级标题
+- `strong` , `em` - 强调
+- `ins` - 插入
+- `del` - 删除
+- `abbr` - 缩写
+- `code` - 代码标识
+- `cite` - 引述来源作品的标题
+- `q` - 引用
+- `blockquote` - 一段或长篇引用
+- `ul` - 无序列表
+- `ol` - 有序列表
+- `dl` , `dt` , `dd` - 定义列表
 
 
 示例：

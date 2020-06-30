@@ -1,7 +1,5 @@
 # Vue 编码规范
 
-## 目标
-
 本规范提供了一种统一的编码规范来编写 [Vue.js](http://vuejs.org/) 代码。这使得代码具有如下的特性：
 
 * 其它开发者或是团队成员更容易阅读和理解。
@@ -11,7 +9,7 @@
 
 本指南为 [De Voorhoede](https://github.com/voorhoede) 参考 [RiotJS 编码规范](https://github.com/voorhoede/riotjs-style-guide) 而写。
 
-## 基于模块开发
+## 1 基于模块开发
 
 始终基于模块的方式来构建你的 app，每一个子模块只做一件事情。
 
@@ -23,7 +21,7 @@ Vue.js 的设计初衷就是帮助开发者更好的开发界面模块。一个�
 
 如果你的组件做了太多的事或是变得臃肿，请将其拆分成更小的组件并保持单一的原则。一般来说，尽量保证每一个文件的代码行数不要超过 100 行。也请保证组件可独立的运行。比较好的做法是增加一个单独的 demo 示例。
 
-## Vue 组件命名
+## 2 Vue 组件命名
 
 组件的命名需遵从以下原则：
 
@@ -56,7 +54,7 @@ Vue.js 的设计初衷就是帮助开发者更好的开发界面模块。一个�
 
 
 
-## 组件表达式简单化
+## 3 组件表达式简单化
 
 Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很强大，但也带来潜在的复杂性。因此，你应该尽量**保持表达式的简单化**。
 
@@ -105,7 +103,7 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 
 
-### 组件 props 原子化
+## 4 组件 props 原子化
 
 虽然 Vue.js 支持传递复杂的 JavaScript 对象通过 props 属性，但是你应该尽可能的使用原始类型的数据。尽量只使用 [JavaScript 原始类型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)（字符串、数字、布尔值）和函数。尽量避免复杂的对象。
 
@@ -137,7 +135,7 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 
 
 
-## 验证组件的 props
+## 5 验证组件的 props
 
 在 Vue.js 中，组件的 props 即 API，一个稳定并可预测的 API 会使得你的组件更容易被其他开发者使用。
 
@@ -177,9 +175,28 @@ Vue.js 的表达式是 100% 的 Javascript 表达式。这使得其功能性很�
 </script>
 ```
 
+### 更好的做法
+
+``` js
+props: {
+  status: {
+    type: String,
+    required: true,
+    validator: function (value) {
+        return [
+          'syncing',
+          'synced',
+          'version-conflict',
+          'error'
+        ].indexOf(value) !== -1
+    }
+  }
+}
+```
 
 
-## 将 `this` 赋值给 `component` 变量
+
+## 6 将 `this` 赋值给 `component` 变量
 
 在 Vue.js 组件上下文中，`this`指向了组件实例。因此当你切换到了不同的上下文时，要确保 `this` 指向一个可用的 `component` 变量。
 
@@ -225,7 +242,7 @@ export default {
 
 
 
-## 组件结构化
+## 7 组件结构化
 
 按照一定的结构组织，使得组件便于理解。
 
@@ -284,7 +301,7 @@ export default {
 
 
 
-## 组件事件命名
+## 8 组件事件命名
 
 Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组件的每一个事件都应该按照一个好的命名规范来，这样可以避免不少的开发问题，具体可见如下 **为什么**。
 
@@ -302,7 +319,7 @@ Vue.js 提供的处理函数和表达式都是绑定在 ViewModel 上的，组�
 
 
 
-## 避免 this.$parent
+## 9 避免 this.$parent
 
 Vue.js 支持组件嵌套，并且子组件可访问父组件的上下文。访问组件之外的上下文违反了[基于模块开发](#基于模块开发)的[第一原则](https://addyosmani.com/first/)。因此你应该尽量避免使用 **`this.$parent`**。
 
@@ -319,7 +336,7 @@ Vue.js 支持组件嵌套，并且子组件可访问父组件的上下文。访�
 
 
 
-## 谨慎使用 this.$refs
+## 10 谨慎使用 this.$refs
 
 Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过 `this.$refs` 可以得到组件或 HTML 元素的上下文。在大多数情况下，通过 `this.$refs`来访问其它组件的上下文是可以避免的。在使用的的时候你需要注意避免调用了不恰当的组件 API，所以应该尽量避免使用 `this.$refs`。
 
@@ -409,7 +426,7 @@ Vue.js 支持通过 `ref` 属性来访问其它组件和 HTML 元素。并通过
 
 
 
-## 使用组件名作为样式作用域空间
+## 11 使用组件名作为样式作用域空间
 
 Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作用域空间。可以将组件名作为 CSS 类的命名空间。
 
@@ -436,11 +453,11 @@ Vue.js 的组件是自定义元素，这非常适合用来作为样式的根作�
 
 
 
-## 提供组件 API 文档
+## 12 提供组件 API 文档
 
 使用 Vue.js 组件的过程中会创建 Vue 组件实例，这个实例是通过自定义属性配置的。为了便于其他开发者使用该组件，对于这些自定义属性即组件API应该在 `README.md` 文件中进行说明。
 
-## 为什么？
+### 为什么？
 
 * 良好的文档可以让开发者比较容易的对组件有一个整体的认识，而不用去阅读组件的源码，也更方便开发者使用。
 * 组件配置属性即组件的 API，对于组件的用户来说他们更感兴趣的是 API 而不是实现原理。
@@ -460,6 +477,7 @@ range-slider/
 
 在 README 文件中说明模块的功能以及使用场景。对于 vue 组件来说，比较有用的描述是组件的自定义属性即 API 的描述介绍。
 
+```md
 # Range slider
 
 ## 功能
@@ -482,13 +500,14 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 | `on-slide` | Function *optional* | 用户拖动开始按钮或者结束按钮时的回调函数，函数接受 `(values, HANDLE)` 格式的参数。 如： `on-slide={ updateInputs }`,  `component.updateInputs = (values, HANDLE) => { const value = values[HANDLE]; }`.
 | `on-end` | Function *optional* | 当用户停止拖动时触发的回调函数，函数接受 `(values, HANDLE)` 格式的参数。
 
+```
 
 如需要自定义 slider 的样式可参考 [noUiSlider 文档]((http://refreshless.com/nouislider/more/#section-styling))
 
 
 
 
-## 提供组件 demo
+## 13 提供组件 demo
 
 添加 `index.html` 文件作为组件的 demo 示例，并提供不同配置情况的效果，说明组件是如何使用的。
 
@@ -500,7 +519,7 @@ range slider 组件可通过拖动的方式来设置一个给定范围内的数�
 
 
 
-## 对组件文件进行代码校验
+## 14 对组件文件进行代码校验
 
 代码校验可以保持代码的统一性以及追踪语法错误。.vue 文件可以通过使用 `eslint-plugin-html`插件来校验代码。你可以通过 `vue-cli` 来开始你的项目，`vue-cli` 默认会开启代码校验功能。
 
@@ -559,7 +578,7 @@ jshint --config modules/.jshintrc --extra-ext=html --extract=auto modules/
 
 注：JSHint 不接受 `vue` 扩展名的文件，只支持 `html`。
 
-## 只在需要时创建组件
+## 15 只在需要时创建组件
 
 ### 为什么？
 
@@ -583,7 +602,7 @@ Vue.js 是一个基于组件的框架。如果你不知道何时创建组件可�
 
 ---
 
-## 尽可能使用 mixins
+## 16 尽可能使用 mixins
 
 ### 为什么?
 
@@ -629,3 +648,46 @@ export default MenuMixin
 </script>
 ```
 
+## 17 为v-for设置键值
+
+总是用 key 配合 v-for
+
+### 为什么?
+
+key 的特殊属性主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes。如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 key 时，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。
+
+### 怎么做?
+
+假设你有一个待办事项列表：
+
+```html
+<template>
+  <ul>
+    <li
+      v-for="todo in todos"
+      :key="todo.id"
+    >
+      {{ todo.text }}
+    </li>
+  </ul>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        todos: [
+          {
+            id: 1,
+            text: '学习使用 v-for'
+          },
+          {
+            id: 2,
+            text: '学习使用 key'
+          }
+        ]
+      }
+    }
+  }
+</script>
+```

@@ -60,9 +60,7 @@
 
 #### 附：命名示例
 
-<img src="https://cloud.githubusercontent.com/assets/1295348/7456687/0643f254-f2b9-11e4-9b14-f1b36257f9a3.jpg" alt="命名示例" width="600">
-
-
+<img :src="$withBase('/imgs/standard/css/css-name.jpg')" alt="命名示例" width="600">
 
 
 ## 2 代码风格
@@ -209,7 +207,7 @@ box-shadow: 0 0 2px rgba(0, 128, 0, .3);
 
 
 
-## 3. 通用
+## 3 通用
 
 ### 3.1 选择器
 
@@ -459,7 +457,7 @@ html[lang|="zh"] q:after {
 
 
 
-## 5. 文本排版
+## 5 文本排版
 
 ### 5.1 字体族
 
